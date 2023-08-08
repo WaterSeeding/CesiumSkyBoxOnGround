@@ -1,8 +1,7 @@
 # 1.1 SkyBoxOnGround
 
-> - [国内查看地址](https://main--sweet-dasik-754a3a.netlify.app/)
-> - [国外查看地址](https://cesium-scene.vercel.app/)
-> - [Github仓库地址](https://github.com/WaterSeeding/CesiumScene)
+> - [查看地址](https://cesium-sky-box-on-ground.vercel.app/)
+> - [Github仓库地址](https://github.com/WaterSeeding/CesiumSkyBoxOnGround)
 
 ## 作用
 
