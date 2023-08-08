@@ -2,8 +2,6 @@ import * as Cesium from "cesium";
 import { SkyBoxFS, SkyBoxVS } from "./_shader";
 import DrawCommand from "./DrawCommand";
 
-let skyboxMatrix3 = new Cesium.Matrix3();
-
 function SkyBoxOnGround(options) {
   this.sources = options.sources;
   this._sources = undefined;
@@ -97,15 +95,17 @@ SkyBoxOnGround.prototype.update = function (frameState, useHdr) {
   );
 
   if (!Cesium.defined(command.vertexArray)) {
+    let resultMatrix3 = new Cesium.Matrix3();
+
     command.uniformMap = {
       u_cubeMap: function () {
         return that._cubeMap;
       },
       u_rotateMatrix: function () {
         if (!Cesium.defined(Cesium.Matrix4.getRotation)) {
-          return Cesium.Matrix4.getMatrix3(command.modelMatrix, skyboxMatrix3);
+          return Cesium.Matrix4.getMatrix3(command.modelMatrix, resultMatrix3);
         }
-        return Cesium.Matrix4.getRotation(command.modelMatrix, skyboxMatrix3);
+        return Cesium.Matrix4.getRotation(command.modelMatrix, resultMatrix3);
       },
     };
 

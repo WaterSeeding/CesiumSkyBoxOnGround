@@ -1,9 +1,11 @@
 import "./app.css";
+import * as Cesium from "cesium";
 import * as dat from "dat.gui";
 import { viewer } from "./main";
 import Scene from "./Scene/index";
 import SkyBoxOnGround from "./SkyBoxOnGround/index";
 import Camera from "./Camera/index";
+import { setCoordinateSystem } from "./setCoordinateSystem";
 
 const gui = new dat.GUI({
   name: "Cesium GUI",
@@ -22,7 +24,7 @@ const camera = new Camera(
   {
     position: {
       longitude: 114.056178,
-      latitude: 22.463280,
+      latitude: 22.46328,
       height: 500,
     },
     headingPitchRoll: {
@@ -40,7 +42,7 @@ const skyBox = new SkyBoxOnGround(
   gui,
   {
     show: true,
-    sourcesType: "default",
+    sourcesType: "day1",
     sourcesList: [
       {
         name: "day1",
@@ -79,3 +81,10 @@ const skyBox = new SkyBoxOnGround(
   },
   false
 );
+
+const position = Cesium.Cartesian3.fromDegrees(
+  114.05089601311309,
+  22.50933945938722,
+  0
+);
+setCoordinateSystem(viewer, position);
