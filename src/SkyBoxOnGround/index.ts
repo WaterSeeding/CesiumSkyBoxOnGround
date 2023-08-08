@@ -20,7 +20,7 @@ export interface SkyBoxParamsInterface {
 
 export default class SkyBox {
   viewer: Cesium.Viewer;
-  skyBox: SkyBoxOnGround | Cesium.SkyBox;
+  skyBox!: SkyBoxOnGround;
   skyBoxParams: SkyBoxParamsInterface | undefined;
   constructor(
     viewer: Cesium.Viewer,
@@ -29,7 +29,6 @@ export default class SkyBox {
     hideGui?: boolean
   ) {
     this.viewer = viewer;
-    this.skyBox = viewer.scene.skyBox;
     this.setInit(gui, skyBoxParams, hideGui);
   }
 
@@ -38,7 +37,7 @@ export default class SkyBox {
     skyBoxParams?: SkyBoxParamsInterface,
     hideGui?: boolean
   ) {
-    setParams(this.skyBox, skyBoxTable).then(
+    setParams(this.viewer.scene.skyBox, skyBoxTable).then(
       (storeCameraParams: SkyBoxParamsInterface) => {
         if (skyBoxParams?.sourcesList) {
           skyBoxParams.sourcesList = [
@@ -66,12 +65,32 @@ export default class SkyBox {
   }
 
   setShow(value: boolean) {
-    this.skyBox.show = value;
+    if (this.skyBox) {
+      this.skyBox.show = value;
+    } else {
+      this.viewer.scene.skyBox.show = value;
+    }
   }
 
   setSources(sources: { [key: string]: string }) {
-    if (!this.skyBox.isDestroyed()) {
-      this.skyBox.destroy();
+    if (!this.skyBox) {
+      // console.log(
+      //   "[this.viewer.scene.skyBox.isDestroyed()]",
+      //   this.viewer.scene.skyBox.isDestroyed()
+      // );
+      if (!this.viewer.scene.skyBox.isDestroyed()) {
+        this.viewer.scene.skyBox.destroy();
+      }
+      // console.log(
+      //   "[this.viewer.scene.skyBox.isDestroyed()]",
+      //   this.viewer.scene.skyBox.isDestroyed()
+      // );
+    } else {
+      // console.log("[this.skyBox.isDestroyed()]", this.skyBox.isDestroyed());
+      if (!this.skyBox.isDestroyed()) {
+        this.skyBox.destroy();
+      }
+      // console.log("[this.skyBox.isDestroyed()]", this.skyBox.isDestroyed());
     }
     let skyBox = new SkyBoxOnGround({
       sources: sources,
