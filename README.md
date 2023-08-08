@@ -1,7 +1,7 @@
 # 1.1 SkyBoxOnGround
 
 > - [查看地址](https://cesium-sky-box-on-ground.vercel.app/)
-> - [Github仓库地址](https://github.com/WaterSeeding/CesiumSkyBoxOnGround)
+> - [仓库地址](https://github.com/WaterSeeding/CesiumSkyBoxOnGround)
 
 ## 作用
 
