@@ -7,6 +7,8 @@ import SkyBoxOnGround from "./SkyBoxOnGround/index";
 import Camera from "./Camera/index";
 import { setCoordinateSystem } from "./setCoordinateSystem";
 
+console.log('是否使用WebGL2', Cesium.FeatureDetection.supportsWebgl2(viewer.scene));
+
 const gui = new dat.GUI({
   name: "Cesium GUI",
   width: 450,
