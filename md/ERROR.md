@@ -2,6 +2,8 @@
 
 > 本篇记录了我在使用`Cesium.SkyBox`源码更换天空盒图片时，却遇到 Fragment 着色器编译失败的问题。
 > 问题：已解决。
+> - [查看地址](https://cesium-sky-box-on-ground.vercel.app/)
+> - [仓库地址](https://github.com/WaterSeeding/CesiumSkyBoxOnGround)
 
 <br />
 
