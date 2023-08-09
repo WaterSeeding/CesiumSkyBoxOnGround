@@ -1,4 +1,4 @@
-// //片元着色器，直接从源码复制
+//片元着色器，直接从源码复制
 // let SkyBoxFS = `uniform samplerCube u_cubeMap;
 //   in vec3 v_texCoord;
 //   void main()
@@ -33,15 +33,15 @@ let SkyBoxFS = `
 `;
 
 let SkyBoxVS = `
-uniform mat3 u_rotateMatrix;
-attribute vec3 position;
-varying vec3 v_texCoord;
+  uniform mat3 u_rotateMatrix;
+  attribute vec3 position;
+  varying vec3 v_texCoord;
 
-void main() {
-  vec3 p = czm_viewRotation * u_rotateMatrix * (czm_temeToPseudoFixed * (czm_entireFrustum.y * position));
-  gl_Position = czm_projection * vec4(p, 1.0);
-  v_texCoord = position.xyz;
-}
+  void main() {
+    vec3 p = czm_viewRotation * u_rotateMatrix * (czm_temeToPseudoFixed * (czm_entireFrustum.y * position));
+    gl_Position = czm_projection * vec4(p, 1.0);
+    v_texCoord = position.xyz;
+  }
 `;
 
 export { SkyBoxFS, SkyBoxVS };

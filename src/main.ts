@@ -9,6 +9,9 @@ const options: Viewer.ConstructorOptions = {
   selectionIndicator: false,
   shadows: true,
   shouldAnimate: true,
+  contextOptions: {
+    requestWebgl1: false,
+  }
 };
 
 export const viewer = new Viewer("cesium-container", options);
