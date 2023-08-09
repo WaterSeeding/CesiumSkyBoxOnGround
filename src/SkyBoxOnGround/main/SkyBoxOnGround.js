@@ -150,9 +150,11 @@ SkyBoxOnGround.prototype.update = function (frameState, useHdr) {
 
   return command;
 };
+
 SkyBoxOnGround.prototype.isDestroyed = function () {
   return false;
 };
+
 SkyBoxOnGround.prototype.destroy = function () {
   let command = this._command;
   command.vertexArray = command.vertexArray && command.vertexArray.destroy();
